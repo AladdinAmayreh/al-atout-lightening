@@ -1,4 +1,4 @@
-<footer id="footer">
+  <footer id="footer">
     <div class="container">
       <div class="footer-menu-list">
         <div class="row d-flex flex-wrap justify-content-between">
@@ -99,7 +99,7 @@
     <hr>
   </footer>
 
-  <div id="footer-bottom">
+  {{-- <div id="footer-bottom">
     <div class="container">
       <div class="d-flex align-items-center flex-wrap justify-content-between">
         <div class="copyright">
@@ -117,5 +117,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 

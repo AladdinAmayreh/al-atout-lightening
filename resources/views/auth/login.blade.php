@@ -1,5 +1,4 @@
-@extends('layouts.master') <!-- Use your master layout -->
-
+@extends('admin.layouts.auth')
 @section('title', 'Admin Login')
 
 @section('content')

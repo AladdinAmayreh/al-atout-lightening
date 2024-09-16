@@ -21,7 +21,7 @@ class AdminMiddleware
             return $next($request); // Allow access if the user is an admin
         }
 
-        // If not an admin, redirect to the homepage or error page
-        return redirect('/')->with('error', 'Access denied.');
+        // If not an admin, redirect to the homepage or show an error message
+        return redirect('/')->with('error', 'Access denied. Only admins can access this page.');
     }
 }

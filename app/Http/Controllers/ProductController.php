@@ -75,6 +75,11 @@ class ProductController extends Controller
         $product = Product::findOrFail($id); // Find product by ID or fail
         return view('admin.products.show', compact('product'));
     }
+    public function adminDashboard()
+    {
+        return view('admin.index');
+    }
+    
     public function destroy(Product $product)
     {
         // Delete the product image

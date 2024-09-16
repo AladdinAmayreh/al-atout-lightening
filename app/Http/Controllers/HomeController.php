@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product; // Import the Product model to fetch products
+use App\Models\Product; 
+use App\Models\HomePageContent; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 class HomeController extends Controller
@@ -10,10 +11,51 @@ class HomeController extends Controller
     // Method to show the home page
     public function index()
     {
-        $products = Product::all(); // Fetch all products from the database
-        return view('home', compact('products')); // Return the 'home' view with the products
+        $content = HomePageContent::first();
+        $products = Product::all(); // Fetch products to display on the homepage
+        return view('home', compact('content', 'products'));
+    }
+    public function edit()
+    {
+        $content = HomePageContent::firstOrCreate([]); // Get or create a new homepage content record
+        return view('admin.home_page.edit', compact('content'));
     }
 
+    public function update(Request $request)
+    {
+        $content = HomePageContent::first();
+
+        // Validate the request
+        $request->validate([
+            'banner_title_1' => 'nullable|string|max:255',
+            'banner_text_1' => 'nullable|string',
+            'banner_image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'banner_title_2' => 'nullable|string|max:255',
+            'banner_text_2' => 'nullable|string',
+            'banner_image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'about_us_text' => 'nullable|string',
+            'about_us_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'vision_text' => 'nullable|string',
+        ]);
+
+        // Update content fields
+        $content->update($request->all());
+
+        // Handle image uploads
+        if ($request->hasFile('banner_image_1')) {
+            $content->banner_image_1 = $request->file('banner_image_1')->store('images', 'public');
+        }
+        if ($request->hasFile('banner_image_2')) {
+            $content->banner_image_2 = $request->file('banner_image_2')->store('images', 'public');
+        }
+        if ($request->hasFile('about_us_image')) {
+            $content->about_us_image = $request->file('about_us_image')->store('images', 'public');
+        }
+
+        $content->save();
+
+        return redirect()->route('admin.home_page.edit')->with('success', 'Home page content updated successfully.');
+    }
     // Method to show the about us page
     public function about()
     {
