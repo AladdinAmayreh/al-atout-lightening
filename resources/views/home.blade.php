@@ -68,12 +68,12 @@
                         <div class="display-header">
                             <h2 class="section-title">{{ $content->section_title }}</h2>
                             <p>{{ $content->about_us_text }}</p>
-                            <div class="btn-wrap">
+                            {{-- <div class="btn-wrap">
                                 <a href="shop.html" class="btn btn-dark btn-medium d-flex align-items-center"
                                     tabindex="0">
                                     {{ __('Shop our store') }} <i class="icon icon-arrow-io"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

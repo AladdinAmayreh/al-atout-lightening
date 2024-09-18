@@ -4,94 +4,83 @@
 
 @section('content')
 
-    <div class="preloader-wrapper">
-        <div class="preloader">
+<!-- Preloader (Optional) -->
+<div class="preloader-wrapper">
+    <div class="preloader">
+    </div>
+</div>
+
+<!-- Banner Section -->
+<section class="site-banner jarallax min-height300 padding-large"
+    style="background: url('{{ asset('storage/' . $aboutContent->banner_image) }}') no-repeat; background-position: top;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title">{{ __('About Us') }}</h1>
+            </div>
         </div>
     </div>
+</section>
 
-
-
-    <section class="site-banner jarallax min-height300 padding-large"
-        style="background: url(images/hero-image.jpg) no-repeat;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 class="page-title">About us</h1>
-
+<!-- Shipping Information Section -->
+<section id="shipping-information" class="padding-large">
+    <div class="container">
+        <div class="row d-flex flex-wrap align-items-center justify-content-between">
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    {{-- <i class="icon icon-truck"></i> --}}
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    {{-- <i class="icon icon-return"></i> --}}
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    {{-- <i class="icon icon-tags1"></i> --}}
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box">
+                    {{-- <i class="icon icon-help_outline"></i> --}}
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="shipping-information" class="padding-large">
-        <div class="container">
-            <div class="row d-flex flex-wrap align-items-center justify-content-between">
-                <div class="col-md-3 col-sm-6">
-                    <div class="icon-box">
-                        <i class="icon icon-truck"></i>
-                        {{-- <h4 class="block-title">
-              <strong>Free shipping</strong> Over $200
-            </h4> --}}
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="icon-box">
-                        <i class="icon icon-return"></i>
-                        {{-- <h4 class="block-title">
-              <strong>Money back</strong> Return within 7 days
-            </h4> --}}
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="icon-box">
-                        <i class="icon icon-tags1"></i>
-                        {{-- <h4 class="block-title">
-              <strong>Buy 4 get 5th</strong> 50% off
-            </h4> --}}
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="icon-box">
-                        <i class="icon icon-help_outline"></i>
-                        {{-- <h4 class="block-title">
-              <strong>Any questions?</strong> experts are ready
-            </h4> --}}
-                    </div>
+<!-- About Us Section -->
+<section id="about-us">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <!-- Dynamic Image -->
+            <div class="col-lg-6 col-md-12">
+                <div class="image-holder">
+                    <img src="{{ asset('storage/' . $aboutContent->about_image) }}" alt="About Us Image" class="about-image">
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="about-us">
-        <div class="container ">
-            <div class="row d-flex align-items-center">
-                <div class="col-lg-6 col-md-12">
-                    <div class="image-holder">
-                        <img src="images/single-image1.jpg" alt="single" class="about-image">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="detail">
-                        <div class="display-header">
-                            <h2 class="section-title">How was Ultras Store started?</h2>
-                            <p>Risus augue curabitur diam senectus congue velit et. Sed vitae metus nibh sit era. Nulla
-                                adipiscing pharetra pellentesque maecenas odio eros at. Et libero vulputate amet duis erat
-                                volutpat vitae eget. Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque
-                                maecenas odio eros at.
-                                <br>
-                                Sed vitae metus nibh sit era. Nulla adipiscing pharetra pellentesque maecenas odio eros at.
-                                Et libero vulputate amet duis erat volutpat vitae eget. Quam libero etiam et in ac at quis.
-                                Risus augue curabitur diam senectus congue velit et.
-                            </p>
-                            <div class="btn-wrap">
-                                <a href="shop.html" class="btn btn-dark btn-medium d-flex align-items-center"
-                                    tabindex="0">Shop our store<i class="icon icon-arrow-io"></i>
-                                </a>
-                            </div>
-                        </div>
+            <!-- Dynamic Text -->
+            <div class="col-lg-6 col-md-12">
+                <div class="detail">
+                    <div class="display-header">
+                        <h2 class="section-title">
+                            {{ app()->getLocale() == 'ar' ? $aboutContent->title_ar : $aboutContent->title_en }}
+                        </h2>
+                        <p>
+                            {{ app()->getLocale() == 'ar' ? $aboutContent->description_ar : $aboutContent->description_en }}
+                        </p>
+                        <div class="btn-wrap">
+                            {{-- <a href="shop.html" class="btn btn-dark btn-medium d-flex align-items-center" tabindex="0">
+                                {{ __('Shop our store') }}<i class="icon icon-arrow-io"></i>
+                            </a>
+                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 @endsection

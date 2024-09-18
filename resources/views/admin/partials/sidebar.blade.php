@@ -71,10 +71,21 @@
                                     <a href="{{ route('admin.homePage.index')}}">
                                         <span class="link-collapse">Home</span>
                                     </a>
-                                </li>
-                              
+                                </li>                             
+                          
+                                <li>
+                                    <a href="{{ route('admin.contact.index')}}">
+                                        <span class="link-collapse">Contact</span>
+                                    </a>
+                                </li>                          
+                                <li>
+                                    <a href="{{ route('admin.about.index')}}">
+                                        <span class="link-collapse">About</span>
+                                    </a>
+                                </li>                          
                             </ul>
                         </div>
+                      
                     </li>
                     
                    
